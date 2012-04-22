@@ -1,0 +1,74 @@
+= bloat_check
+
+BloatCheck is yet another tool for debugging bloat and memory leaks in ruby
+projects.  This one has the feature that you can wrap any bit of code with
+a "BloatCheck" and it will log elapsed time, and memory & object growth.
+
+Plus you can include it in any rails controller to log that same info per
+request.
+
+== Installation
+
+Gemfile:
+        gem 'bloat_check'
+
+== Usage: Ruby Code
+
+Put this line anywhere:
+
+        BloatCheck.log("some label")
+
+and it will write to the log the current time, process memory size, and 5 ruby
+objects classes with most instances, prefixed with "BLOAT[pid]" and your label.
+
+Wrap it around any existing code, such as
+
+        BloatCheck.log("here's looking at you") do
+            some_suspec_computation()
+            and_more()
+        end
+
+And it will write to the log the deltas: elapsed time, change in memory
+size, and 5 ruby object classes that had the largest increase in number of
+instances.
+
+== Usage: Rails Controllers
+
+In a rails controller, you can do
+
+        class MyController < ApplicationController
+            include BloatCheck::WrapRequests
+
+            # etc.
+        end
+
+and every request will log the deltas incurred during that request.
+
+== Disabling (e.g., when running tests)
+
+BloatCheck is slow (calls system 'ps', and runs through
+ObjectSpace#each_object), so you might want to disable it in your unit
+tests or integration tests.  Do that via:
+
+        BloatCheck.disable = true
+
+Put this, e.g. in your spec/spec_helper.rb file
+
+== Choosing the logger
+
+By default, BloatCheck logs to the Rails logger if Rails is defined, or to
+STDOUT otherwise.  But you can specify your own logger using
+
+        BloatCheck.logger = Logger.new(...)
+
+
+== Versions
+
+Has been tested on MRI 1.9.3
+
+== History
+
+== Copyright
+
+Released under the MIT License.  See LICENSE for details.
+
