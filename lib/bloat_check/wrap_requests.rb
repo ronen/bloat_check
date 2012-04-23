@@ -8,11 +8,11 @@ module BloatCheck
     end
 
     def init_bloat_stats
-      @bloat_start = BloatCheck.stats
+      @bloat_start = Stats.get
     end
 
     def dump_bloat_stats
-      (BloatCheck.stats - @bloat_start).log("REQ=#{request.method.inspect} URL=#{request.url.inspect}")
+      (Stats.get - @bloat_start).log("REQ=#{request.method.inspect} URL=#{request.url.inspect}")
     end
   end
 end

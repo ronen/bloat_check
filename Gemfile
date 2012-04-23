@@ -1,4 +1,4 @@
 source 'http://rubygems.org'
 
-# Specify your gem's dependencies in hash_keyword_args.gemspec
+# Specify your gem's dependencies in bloat_check.gemspec
 gemspec
