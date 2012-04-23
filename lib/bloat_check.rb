@@ -1,3 +1,5 @@
+require "logger"
+
 require 'bloat_check/version'
 require 'bloat_check/stats'
 require 'bloat_check/wrap_requests'
