@@ -64,7 +64,7 @@ STDOUT otherwise.  But you can specify your own logger using
 
 == Versions
 
-Has been tested on MRI 1.9.3
+Has been tested on MRI 1.9.3 and Rails 3.2
 
 == History
 
