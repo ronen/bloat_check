@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["ronen@barzel.org"]
   gem.description   = %q{Another ruby/rails bloat and memory leak debugging tool.}
   gem.summary       = %q{Another ruby/rails bloat and memory leak debugging tool.}
-  gem.homepage      = "http://github.com/ronen/blo"
+  gem.homepage      = "http://github.com/ronen/bloat_check"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
