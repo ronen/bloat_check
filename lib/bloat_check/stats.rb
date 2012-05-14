@@ -25,7 +25,7 @@ module BloatCheck
       memory = `ps -o rss= -p #{$$}`.to_i
       counts = Hash.new(0)
       ObjectSpace.each_object do |obj|
-        klass = (class << obj ; superclass ; end) # can't use obj.class method since it may be overwritten
+        klass = ((class << obj ; superclass ; end) rescue Object) # don't use obj.class method since it may be overwritten
         counts[klass] += 1
       end
       self.new(:memory => memory, :counts => counts, :time => Time.now)
