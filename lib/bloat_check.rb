@@ -29,6 +29,8 @@ module BloatCheck
   end
 
   def self.log(message)
+    return block_given? && yield if disabled?
+
     start = Stats.get
     if block_given?
       begin
