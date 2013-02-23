@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = BloatCheck::VERSION
 
   gem.add_dependency 'key_struct'
+  gem.add_dependency 'its-it'
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
