@@ -1,4 +1,5 @@
 require 'key_struct'
+require 'its-it'
 
 module BloatCheck
   class Stats < KeyStruct.reader(:memory, :counts, :time)
